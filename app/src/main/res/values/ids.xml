@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="recycler_view" type="id" />
+    <item name="text_item" type="id" />
+    <item name="time_item" type="id" />
+    <item name="item_information_text" type="id" />
+    <item name="item_tem_text" type="id" />
+    <item name="item_hot_text" type="id" />
+    <item name="info_image" type="id" />
+    <item name="news_info" type="id" />
+</resources>
