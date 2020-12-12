@@ -8,4 +8,6 @@
     <item name="item_hot_text" type="id" />
     <item name="info_image" type="id" />
     <item name="news_info" type="id" />
+    <item name="view_pager" type="id" />
+    <item name="image_pager" type="id" />
 </resources>

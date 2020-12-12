@@ -1,29 +1,23 @@
 package com.example.recyclerviewdemo;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.example.recyclerviewdemo.adapter.InformationAdapter;
+import com.example.recyclerviewdemo.adapter.TurnAdapter;
 import com.jeason.http.httpUtils.CreateHttp;
 import com.jeason.http.httpUtils.Request;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
     private InformationAdapter adapter;
 
+    private TurnAdapter turnAdapter;
+
+    private ViewPager mViewPager;
+
     private ArrayList<PageItem> pageItems;
+
+    private ArrayList<View> mViewPagers;
+
+    private LinearLayout mLinearLayout;
 
     private Handler handler;
 
@@ -74,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
-       // initAdapter();
-
-      //  initRecyclerView();
     }
 
 
@@ -84,17 +83,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
+        mViewPager.setAdapter(turnAdapter);
     }
 
     private void initAdapter() {
-//        ArrayList<String> data = new ArrayList<>();
-//        for(int i = 0;i < 20;i++){
-//            data.add("条目" + i);
-//        }
         adapter = new InformationAdapter(pageItems);
+        turnAdapter = new TurnAdapter(mViewPagers);
     }
 
     private void findView() {
+        mViewPager = findViewById(R.id.view_pager);
         recyclerView = findViewById(R.id.recycler_view);
+        mViewPagers = new ArrayList<>();
+        for(int i = 0;i < 3;i++){
+            mViewPagers.add(new ViewPagerItem(this));
+        }
     }
 }
