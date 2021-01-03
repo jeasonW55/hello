@@ -36,8 +36,6 @@ public class InformationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         this.pageItemArrayList = pageItems;
     }
 
-
-
     public static class InformationViewHolder extends RecyclerView.ViewHolder {
 
         TextView item_info, item_hot, item_time;
